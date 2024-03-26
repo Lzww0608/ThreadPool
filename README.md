@@ -7,3 +7,10 @@
 
 + 使用RAII管理线程池的生命周期。
 
+
+### 新增纯C版本动态线程池，
+
++ 基本逻辑与C++版本相同，实现细节略有不同，具体见代码注释 ———— 2024.3.26
+
++ 编译为动态链接库命令shell: gcc -shared thread_pool.o -o libthread_pool.so -I./ -L./ -lpthread
+  
