@@ -12,7 +12,7 @@
 
 + 基本逻辑与C++版本相同，实现细节略有不同，具体见代码注释，其中"atomic.h" 与 "spinlock.h"为直接使用动态开源库。 
 
-+ 编译为动态链接库命令shell: gcc -shared thread_pool.o -o libthread_pool.so -I./ -L./ -lpthread
++ 编译为动态链接库命令shell: gcc thread_pool.c -c -fPIC   gcc -shared thread_pool.o -o libthread_pool.so -I./ -L./ -lpthread
 
 + taskqueue_test.cc shell: g++ taskqueue_test.cc -o taskqueue_test -lgtest -lgtest_main -lpthread (需安装Google Test)
 
