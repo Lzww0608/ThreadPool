@@ -49,7 +49,6 @@ void test_thrdpool(int nproducer, int nconsumer) {
 }
 
 int main() {
-    // test_thrdpool(1, 8);
     test_thrdpool(4, 4);
     return 0;
 }
