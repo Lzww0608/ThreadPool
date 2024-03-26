@@ -236,7 +236,7 @@ void thread_pool_terminate(thread_pool_t *pool) {
 void thread_pool_waitdone(thread_pool_t *pool) {
     int i;
     for (i = 0; i < pool->thread_count; i++) {
-        pthread_join(&pool->threads[i], NULL);
+        pthread_join(pool->threads[i], NULL);
     }
     __task_queue_destroy(pool->task_queue);
     free(pool->threads);
