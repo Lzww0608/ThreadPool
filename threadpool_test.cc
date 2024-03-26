@@ -1,4 +1,4 @@
-#include "thrd_pool.h"
+#include "thread_pool.h"
 #include <bits/types/time_t.h>
 #include <chrono>
 #include <cstddef>
@@ -21,14 +21,14 @@ void JustTask(void *ctx) {
 
 constexpr int64_t n = 1000000;
 
-void producer(thrdpool_t *pool) {
+void producer(thread_pool_t *pool) {
     for(int64_t i=0; i < n; ++i) {
-        thrdpool_post(pool, JustTask, NULL);
+        thread_pool_post(pool, JustTask, NULL);
     }
 }
 
 void test_thrdpool(int nproducer, int nconsumer) {
-    auto pool = thrdpool_create(nconsumer);
+    auto pool = thread_pool_create(nconsumer);
     for (int i=0; i<nproducer; ++i) {
         std::thread(&producer, pool).detach();
     }
@@ -44,8 +44,8 @@ void test_thrdpool(int nproducer, int nconsumer) {
     std::cout << t2 << " " << t1 << " " << "used:" << t2-t1 << " exec per sec:"
         << (double)g_count.load()*1000 / (t2-t1) << std::endl;
 
-    thrdpool_terminate(pool);
-    thrdpool_waitdone(pool);
+    thread_pool_terminate(pool);
+    thread_pool_waitdone(pool);
 }
 
 int main() {
