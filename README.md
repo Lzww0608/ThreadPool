@@ -8,9 +8,9 @@
 + 使用RAII管理线程池的生命周期。
 
 
-### 新增纯C版本动态线程池
+### 新增纯C版本动态线程池 ———— 2024.3.26
 
-+ 基本逻辑与C++版本相同，实现细节略有不同，具体见代码注释，其中"atomic.h" 与 "spinlock.h"为直接使用动态开源库。 ———— 2024.3.26
++ 基本逻辑与C++版本相同，实现细节略有不同，具体见代码注释，其中"atomic.h" 与 "spinlock.h"为直接使用动态开源库。 
 
 + 编译为动态链接库命令shell: gcc -shared thread_pool.o -o libthread_pool.so -I./ -L./ -lpthread
 
